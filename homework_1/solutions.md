@@ -13,9 +13,9 @@ date: 1-10-2024
 We show both sides of the implication:
 
 $(\implies)$: Let $M$ be a decisive polytime NTM that decides the language $L$. Notice
-first that when running $M$ on the input $x$, if $x \in L$ there must be a computation path that outputs __yes__; otherwise, $x \not\in L$, and it must be the case that there is a computation path that outputs __no__ (by decisiveness).
+first that when running $M$ on the input $x$, if $x \in L$ there must be a computation path that outputs __yes__; otherwise, $x \not\in L$, and it must be the case that there is a computation path that outputs __no__ (by decisiveness). Moreover, every computation path is guaranteed to halt, outputting __yes__, __no__, or __maybe__.
 
-This observation is sufficient to construct two polytime verifiers $V$ and $V'$ that will show that $L \in NP$ and $L \in coNP$, respectively, by interpreting the certificate $C$ as the computation path, and running $M$ deterministically with that computation path. Specifically, on input $\langle x, C \rangle$, the verifier $V$:
+These observations are sufficient to construct two polytime verifiers $V$ and $V'$ that will show that $L \in NP$ and $L \in coNP$, respectively, by interpreting the certificate $C$ as the computation path, and running $M$ deterministically with that computation path. Specifically, on input $\langle x, C \rangle$, the verifier $V$:
 * Runs $M$ on the input $x$ by interpreting $C$ as the computation path.
 * Outputs __yes__ if $M$ returns __yes__, and outputs __false__ otherwise.
 
