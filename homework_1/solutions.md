@@ -24,7 +24,7 @@ $$
 
 # 2
 
-We first verify the D3SAT problem through the same witness function as with 3SAT, which we know is a polynomial one.
+We first verify the D3SAT problem through the same witness function as with 3SAT, which we know is a polynomial one. Thus, D3SAT is in NP.
 
 To prove that the D3SAT problem is NP-Hard, we will reduce from 3SAT to D3SAT. Given an instance of 3SAT, we can construct an equivalent instance of D3SAT by transforming each clause into equivalent clauses with three distinct variables. We separate the processing of these clauses into four different cases:
 
