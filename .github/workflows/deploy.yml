@@ -26,7 +26,7 @@ jobs:
 
       - name: generate solutions
         run: |
-          pandoc -o build/solutions1.pdf homework_1/solutions.md
+          pandoc -o build/solutions1.pdf homework_1/solutions.md --resource-path homework_1/
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
