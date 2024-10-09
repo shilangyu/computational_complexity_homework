@@ -40,7 +40,7 @@ If $x \in L$, there exists a computation that will output __yes__ by the definit
 
 We can first build a verifier for the $\textsc{D3SAT}$ problem by using the same witness function as with $\textsc{SAT}$, which we know is polynomial. Thus, $\textsc{D3SAT}$ is in $\mathsf{NP}$.
 
-To prove that the $\textsc{D3SAT}$ problem is $\mathsf{NP}$-hard, we reduce $\textsc{SAT} \leq_P \textsc{D3SAT}$. Given an instance of $\textsc{SAT}$, we construct an equisatisfiable instance of $\textsc{D3SAT}$ by transforming each clause to have three distinct variables, while preserving satisfiability. We separate the processing of these clauses into four different cases:
+To prove that the $\textsc{D3SAT}$ problem is $\mathsf{NP}$-hard, we reduce $\textsc{SAT} \leq_P \textsc{D3SAT}$. Given an instance of $\textsc{SAT}$, we construct an equisatisfiable instance of $\textsc{D3SAT}$ by transforming each clause to have three distinct variables. We separate the processing of these clauses into four different cases:
 
 1. If the clause has three distinct variables, i.e., $C$ is equivalent to $(x_1 \lor x_2 \lor x_3)$, we leave it as is.
 2. If the clause is a tautology, i.e., in $C$ there is a variable $x$ and its negation $\neg x$, we remove it as it will always be satisfied no matter the assignment.
