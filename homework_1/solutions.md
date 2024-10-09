@@ -71,7 +71,7 @@ To prove that it is $\mathsf{NP}$-hard, we will reduce $\textsc{SAT}$ to $\texts
 
 To put an example, we have the following graph for the $\textsc{SAT}$ instance $(x_1 \lor x_2 \lor x_3) \land (\neg x_1) \land (\neg x_2 \lor \neg x_3)$:
 
-![](KERNEL_example.png){width=256px}
+![Example graph for a SAT instance](KERNEL_example.png){width=256px}
 
 Now, we will prove that the $\textsc{SAT}$ instance is satisfiable if and only if the graph has a kernel of size $\leq m$, where $m$ is the number of variables in the $\textsc{SAT}$ instance.
 
