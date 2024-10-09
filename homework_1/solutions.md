@@ -15,7 +15,7 @@ We show both sides of the implication:
 $(\implies)$: Let $M$ be a decisive polytime NTM that decides the language $L$. Notice
 first that when running $M$ on the input $x$, if $x \in L$ there must be a computation path that outputs __yes__; otherwise, $x \not\in L$, and it must be the case that there is a computation path that outputs __no__ (by decisiveness). Moreover, every computation path is guaranteed to halt, outputting __yes__, __no__, or __maybe__.
 
-These observations are sufficient to construct two polytime verifiers $V$ and $V'$ that will show that $L \in NP$ and $L \in coNP$, respectively, by interpreting the certificate $C$ as the computation path, and running $M$ deterministically with that computation path. Specifically, on input $\langle x, C \rangle$, the verifier $V$:
+These observations are sufficient to construct two polytime verifiers $V$ and $V'$ that will show that $L \in mathsf{NP}$ and $L \in mathsf{coNP}$, respectively, by interpreting the certificate $C$ as the computation path, and running $M$ deterministically with that computation path. Specifically, on input $\langle x, C \rangle$, the verifier $V$:
 * Runs $M$ on the input $x$ by interpreting $C$ as the computation path.
 * Outputs __yes__ if $M$ returns __yes__, and outputs __false__ otherwise.
 
@@ -25,7 +25,7 @@ Similarly, on input $\langle x, C \rangle$, the verifier $V'$:
 
 Since $M$ decides $L$, for $x \in L$, there exists a computation of $M$ that halts with output __yes__, thus showing that $V$ is a polytime verifier for $L$. Moreover, for $x \not\in L$, there exists a computation path of $M$ such that the output is __no__, and therefore $V'$ is also a polytime verifier for $\overline{L}$.
 
-$(\impliedby)$: Let $L \in NP \cap coNP$, and let $V$ and $V'$ be polytime verifiers for $L$ and $\overline{L}$, respectively. We construct a decisive NTM $M$ that decides $L$ the following way:
+$(\impliedby)$: Let $L \in mathsf{NP} \cap mathsf{coNP}$, and let $V$ and $V'$ be polytime verifiers for $L$ and $\overline{L}$, respectively. We construct a decisive NTM $M$ that decides $L$ the following way:
 * Non-deterministically choose each bit of the certificate $C$,
 * Run the verifier $V(x, C)$ and output __yes__ if the verifier outputs __yes__.
 * Run the verifier $V'(x, C)$ and output __no__ if the verifier outputs __yes__.
