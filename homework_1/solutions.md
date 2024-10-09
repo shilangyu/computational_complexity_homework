@@ -46,7 +46,7 @@ To put an example, we have the following graph for the SAT instance $(x_1 \lor x
 
 ![](KERNEL_example.png){width=256px}
 
-Now, we will prove that the SAT instance is satisfiable if and only if the graph has a kernel of size $\leq k = m$, where $m$ is the number of variables in the SAT instance.
+Now, we will prove that the SAT instance is satisfiable if and only if the graph has a kernel of size $\leq m$, where $m$ is the number of variables in the SAT instance.
 
 $(\implies):$ If the SAT instance is satisfiable, we can construct a kernel of size $m$ by selecting the vertices corresponding to the true literals in a valid assignment, for every $i$, we pick vertex $x_i$ if the variable $x_i$ is true, and $\neg x_i$ otherwise.
 
@@ -72,4 +72,4 @@ Thus, we can conclude that every kernel of size $m$ will only have exactly one v
 
 From these observations, we can construct a valid assignment for the SAT instance given a kernel of size $m$ (from Observation 2, it generalizes to $\leq m$). For every picked vertex in the kernel set (one vertex for each variable from Observation 1), we set the corresponding variable to true if the picked vertex is the vertex $x_i$, and false otherwise (even if it is $t_i$, from Observation 3 we can arbitrarily choose it to be false). From the dominance property, we know that every clause vertex is connected to at least one picked vertex, so one of its literals will be set to true, making the clause satisfied. Thus, the constructed assignment satisfies all clauses, and the SAT instance is satisfiable.
 
-Thus, we have shown that the SAT instance is satisfiable if and only if the graph has a kernel of size $\leq m$, where $m$ is the number of variables in the SAT instance. Since the SAT problem is NP-Hard, the KERNEL problem is also NP-Hard. Therefore, the KERNEL problem is NP-Complete.
+Thus, we have shown that the SAT instance is satisfiable if and only if the graph has a kernel of size $\leq m$, where $m$ is the number of variables in the SAT instance. Since SAT is NP-complete, this shows that KERNEL is NP-complete.
