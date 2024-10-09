@@ -53,7 +53,7 @@ The transformation is linear in the size of the problem, the fourth case being t
 
 # 3
 
-To prove that the $\textsc{Kernel}$ problem is in NP, we need to show that given a polynomial size certificate, we can verify in polynomial time a valid witness function. The certificate for the $\textsc{Kernel}$ problem is a possible solution represented by a set of vertices $S\subseteq V$ such that $|S| \leq k$. For the witness function, we need to check if this solution satisfies the two conditions:
+To prove that the $\textsc{Kernel}$ problem is in $\mathsf{NP}$, we need to show that given a polynomial size certificate, we can verify in polynomial time a valid witness function. The certificate for the $\textsc{Kernel}$ problem is a possible solution represented by a set of vertices $S\subseteq V$ such that $|S| \leq k$. For the witness function, we need to check if this solution satisfies the two conditions:
 
 * (Independence) The vertices in $S$ are not connected between each other.
 * (Dominance) The set $S \cup N(S)$ contains all the vertices in the graph.
@@ -62,9 +62,9 @@ Checking for the independence condition is straightforward. We iterate over all 
 
 Checking for the dominance condition is also polynomial. We first create the neighborhood set $N(S)$ by iterating over the connections of $S$, and then iterate over all vertices in the graph and check if they are in $S$ or in $N(S)$. This process has a time complexity of $O(k|V|+|V|)=O(|V|^2)$, where $n$ is the number of vertices in the graph.
 
-Thus, since we can verify the correctness of a solution in polynomial time, the $\textsc{Kernel}$ problem is in NP.
+Thus, since we can verify the correctness of a solution in polynomial time, the $\textsc{Kernel}$ problem is in $\mathsf{NP}$.
 
-To prove that it is NP-Hard, we will reduce $\textsc{SAT}$ to $\textsc{Kernel}$. Given an instance of $\textsc{SAT}$, we create a new graph $G$ with the following structure:
+To prove that it is $\mathsf{NP}$-hard, we will reduce $\textsc{SAT}$ to $\textsc{Kernel}$. Given an instance of $\textsc{SAT}$, we create a new graph $G$ with the following structure:
 
 * For each variable $x_i$, we create three vertices: $x_i$, $\neg x_i$, and $t_i$. We add edges to connect them all with each other (such that this subgraph has a triangle structure).
 * For each clause $C_j$, we create a vertex $c_j$ and connect it through edges with the vertices corresponding to the literals in the clause (either some $x_i$ or $\neg x_i$).
@@ -99,4 +99,4 @@ Thus, we can conclude that every kernel of size $m$ will only have exactly one v
 
 From these observations, we can construct a valid assignment for the $\textsc{SAT}$ instance given a kernel of size $m$ (from Observation 2, it generalizes to $\leq m$). For every picked vertex in the kernel set (one vertex for each variable from Observation 1), we set the corresponding variable to true if the picked vertex is the vertex $x_i$, and false otherwise (even if it is $t_i$, from Observation 3 we can arbitrarily choose it to be false). From the dominance property, we know that every clause vertex is connected to at least one picked vertex, so one of its literals will be set to true, making the clause satisfied. Thus, the constructed assignment satisfies all clauses, and the $\textsc{SAT}$ instance is satisfiable.
 
-Thus, we have shown that the $\textsc{SAT}$ instance is satisfiable if and only if the graph has a kernel of size $\leq m$, where $m$ is the number of variables in the $\textsc{SAT}$ instance. Since $\textsc{SAT}$ is NP-complete, this shows that $\textsc{Kernel}$ is NP-complete.
+Thus, we have shown that the $\textsc{SAT}$ instance is satisfiable if and only if the graph has a kernel of size $\leq m$, where $m$ is the number of variables in the $\textsc{SAT}$ instance. Since $\textsc{SAT}$ is $\mathsf{NP}$-complete, this shows that $\textsc{Kernel}$ is $\mathsf{NP}$-complete.
