@@ -50,6 +50,7 @@ To prove that the $\textsc{D3SAT}$ problem is $\mathsf{NP}$-hard, we will reduce
 It is direct to see that the first and second cases are equivalent to the original $\textsc{SAT}$ instance. The third and fourth cases are equivalent to the original $\textsc{SAT}$ instance because the new variables $x_2$ and $x_3$ are not present in any other clause, and the new clauses are true if and only if the original clause is true. 
 
 The transformation is linear in the size of the problem, the fourth case being the worst, where for 1 original clause we create 4. Thus, since the resulting instance of $\textsc{D3SAT}$ is satisfiable if and only if the original $\textsc{SAT}$ instance is satisfiable, $\textsc{D3SAT}$ is $\mathsf{NP}$-hard.
+
 # 3
 
 To prove that the $\textsc{Kernel}$ problem is in NP, we need to show that given a polynomial size certificate, we can verify in polynomial time a valid witness function. The certificate for the $\textsc{Kernel}$ problem is a possible solution represented by a set of vertices $S\subseteq V$ such that $|S| \leq k$. For the witness function, we need to check if this solution satisfies the two conditions:
