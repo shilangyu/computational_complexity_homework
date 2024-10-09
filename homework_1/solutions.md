@@ -29,7 +29,7 @@ We first verify the $\textsc{D3SAT}$ problem through the same witness function a
 To prove that the $\textsc{D3SAT}$ problem is $\mathsf{NP}$-hard, we will reduce from $\textsc{SAT}$ to $\textsc{D3SAT}$. Given an instance of $\textsc{SAT}$, we can construct an equivalent instance of $\textsc{D3SAT}$ by transforming each clause into equivalent clauses with three distinct variables. We separate the processing of these clauses into four different cases:
 
 1. If the clause has three distinct variables, i.e., $C$ is equivalent to $(x_1 \lor x_2 \lor x_3)$, we leave it as is.
-2. If the clause is a tautology, i.e., in $C$ there is a variable $x$ and its negation $\neg x$, we directly skip it as it will always be satisfied no matter the assignment.
+2. If the clause is a tautology, i.e., in $C$ there is a variable $x$ and its negation $\neg x$, we remove it as it will always be satisfied no matter the assignment.
 3. If the clause has only two distinct variables due to a repetition of a literal, i.e., $C$ is equivalent to $(x_1 \lor x_1 \lor x_2)$, we can replace it with two clauses: $(x_1 \lor x_2 \lor x_3) \land (x_1 \lor x_2 \lor \neg x_3)$, where $x_3$ is a new variable.
 4. If the clause has only one distinct variable, i.e., $C$ is equivalent to $(x_1 \lor x_1 \lor x_1)$, we can replace similarly to what we did in the previous case but with two more clauses and a new variable: $(x_1 \lor x_2 \lor x_3) \land (x_1 \lor x_2 \lor \neg x_3) \land (x_1 \lor \neg x_2 \lor x_3) \land (x_1 \lor \neg x_2 \lor \neg x_3)$, where $x_2$ and $x_3$ are new variables.
 
