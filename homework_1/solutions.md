@@ -60,7 +60,7 @@ To prove that the $\textsc{Kernel}$ problem is in $\mathsf{NP}$, we need to show
 
 Checking for the independence condition is straightforward. We iterate over all pairs of vertices in $S$ and check if there is an edge between them. If we find an edge, it is not a valid certificate. This process has a time complexity of $O(k^2)=O(|V|^2)$, which is polynomial in the size of the input.
 
-Checking for the dominance condition is also polynomial. We first create the neighborhood set $N(S)$ by iterating over the connections of $S$, and then iterate over all vertices in the graph and check if they are in $S$ or in $N(S)$. This process has a time complexity of $O(k|V|+|V|)=O(|V|^2)$, where $n$ is the number of vertices in the graph.
+Checking for the dominance condition is also polynomial. We first create the neighborhood set $N(S)$ by iterating over the connections of $S$, and then iterate over all vertices in the graph and check if they are in $S$ or in $N(S)$. This process has a time complexity of $O(k|V|+|V|)=O(|V|^2)$.
 
 Thus, since we can verify the correctness of a solution in polynomial time, the $\textsc{Kernel}$ problem is in $\mathsf{NP}$.
 
