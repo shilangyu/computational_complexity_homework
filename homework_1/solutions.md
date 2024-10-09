@@ -25,7 +25,9 @@ $$
 # 2
 
 # 3
+
 To prove that the KERNEL problem is in NP, we need to show that given a polynomial size certificate, we can verify in polynomial time a valid witness function. The certificate for the KERNEL problem is a possible solution represented by a set of vertices $S\subseteq V$ such that $|S| \leq k$. For the witness function, we need to check if this solution satisfies the two conditions:
+
 * (Independence) The vertices in $S$ are not connected between each other.
 * (Dominance) The set $S \cup N(S)$ contains all the vertices in the graph.
 
@@ -36,10 +38,13 @@ Checking for the dominance condition is also polynomial. We first create the nei
 Thus, since we can verify the correctness of a solution in polynomial time, the KERNEL problem is in NP.
 
 To prove that it is NP-Hard, we will reduce SAT to KERNEL. Given an instance of SAT, we create a new graph $G$ with the following structure:
+
 * For each variable $x_i$, we create three vertices: $x_i$, $\neg x_i$, and $t_i$. We add edges to connect them all with each other (such that this subgraph has a triangle structure).
 * For each clause $C_j$, we create a vertex $c_j$ and connect it through edges with the vertices corresponding to the literals in the clause (either some $x_i$ or $\neg x_i$).
 
 To put an example, we have the following graph for the SAT instance $(x_1 \lor x_2 \lor x_3) \land (\neg x_1) \land (\neg x_2 \lor \neg x_3)$:
+
+![](KERNEL_example.png){width=256px}
 
 Now, we will prove that the SAT instance is satisfiable if and only if the graph has a kernel of size $\leq k = m$, where $m$ is the number of variables in the SAT instance.
 
