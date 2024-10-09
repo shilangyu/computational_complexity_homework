@@ -56,7 +56,7 @@ Since the assignment satisfies all clauses, any clause vertex will be connected 
 
 $(\impliedby):$ For the first proof, we will start with some observations and use them to construct a valid assignment for the SAT instance given a kernel of size $\leq m$.
 
-**Observation 1**: For every variable triangle, we need to pick one of the nodes $x_i$, $\neg x_i$ and $t_i$ for the kernel set to be dominating, since $t_i$ is only directly connected to $x_i$ and $\neg x_i$.
+**Observation 1**: For every variable triangle, we need to pick one of the nodes $x_i$, $\neg x_i$, or $t_i$ for the kernel set to be dominating, since $t_i$ is only directly connected to $x_i$ and $\neg x_i$.
 
 **Corollary 1**: For a set $S$ to be dominating (kernel), it must have a size of at least $m$, being the number of variables in the SAT instance, or equivalently, the number of variables $t_i$.
 
