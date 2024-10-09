@@ -69,7 +69,7 @@ To prove that it is $\mathsf{NP}$-hard, we reduce $\textsc{SAT} \leq_P \textsc{K
 * For each variable $x_i$, we create three vertices: $x_i$, $\neg x_i$, and $t_i$. We add edges to connect them all with each other (such that this subgraph has a triangle structure).
 * For each clause $C_j$, we create a vertex $c_j$ and connect it through edges with the vertices corresponding to the literals in the clause (either some $x_i$ or $\neg x_i$).
 
-To put an example, we have the following graph for the $\textsc{SAT}$ instance $(x_1 \lor x_2 \lor x_3) \land (\neg x_1) \land (\neg x_2 \lor \neg x_3)$:
+As an example, Figure 1 presents the constructed graph for the CNF formula $(x_1 \lor x_2 \lor x_3) \land (\neg x_1) \land (\neg x_2 \lor \neg x_3)$.
 
 ![Example graph for a SAT instance](KERNEL_example.png){width=256px}
 
