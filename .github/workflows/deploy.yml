@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: install pandoc
         run: |
@@ -18,15 +18,16 @@ jobs:
           curl https://github.com/jgm/pandoc/releases/download/3.4/pandoc-3.4-1-amd64.deb -L --output pandoc.deb
           sudo apt install ./pandoc.deb
           sudo apt-get install -y texlive
-      
+
       - name: prepare build
         run: |
           mkdir build
-          echo '<ul><li><a href="./solutions1.pdf">solutions 1</a></li></ul>' > build/index.html
+          echo '<ul><li><a href="./solutions1.pdf">solutions 1</a></li><li><a href="./solutions2.pdf">solutions 2</a></li></ul>' > build/index.html
 
       - name: generate solutions
         run: |
           pandoc -o build/solutions1.pdf homework_1/solutions.md --resource-path homework_1/
+          pandoc -o build/solutions2.pdf homework_2/solutions.md --resource-path homework_2/
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
