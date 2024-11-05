@@ -20,7 +20,7 @@ Define the following variant of the problem:
 \textsc{3-FixedColourGame} = \{\langle G, c \rangle \,:\, & G \textrm{ is a graph such that Alice has a winning} \\ 
 & \textrm{strategy where every allowed 3-coloring } \hat{c} : V \to \{1, 2, 3\} \\ & \textrm{satisfies } \forall x \in \textrm{dom}(c), \hat{c}(x) = c(x) \}
 \end{align*}
-We argue that $\textsc{3-ColourGame} \in \textsc{PSPACE}$ by showing that we can solve $\textsc{3-FixedColourGame}$ recursively while re-using a polynomial amount of memory. Indeed, it is enough to solve $\textsc{3-FixedColourGame}$ since
+We argue that $\textsc{3-ColourGame} \in \mathsf{PSPACE}$ by showing that we can solve $\textsc{3-FixedColourGame}$ recursively while re-using a polynomial amount of memory. Indeed, it is enough to solve $\textsc{3-FixedColourGame}$ since
 \[
 \langle G \rangle \in \textsc{3-ColourGame} \iff \langle G, \emptyset \rangle \in \textsc{3-FixedColourGame}
 \]
@@ -61,9 +61,9 @@ The above algorithm needs $O(n^2)$ space to store $G$, as well as
 \[
 s(n) = s(n-1) + O(\log(n)) = O(n \log(n))
 \]
-space from the recursion, hence showing that $\textsc{3-ColourGame} \in \textsc{PSPACE}$.
+space from the recursion, hence showing that $\textsc{3-ColourGame} \in \mathsf{PSPACE}$.
 
-To show that $\textsc{3-ColourGame}$ is $\textsc{PSPACE}$-complete, we reduce in polynomial-time from $\textsc{TQBF}$. Given a Boolean formula $F$ of the form
+To show that $\textsc{3-ColourGame}$ is $\mathsf{PSPACE}$-complete, we reduce in polynomial-time from $\textsc{TQBF}$. Given a Boolean formula $F$ of the form
 \[
 \exists x_1 \forall x_2 \ldots \forall x_{n-1} \exists x_n \varphi(x_1, \ldots, x_n)
 \]
@@ -224,4 +224,4 @@ The reduction can be done in polynomial time, since the size of the graph is pol
 
 Notice that Alice and Bob have picked an assignment of variables in phase 2, and the assignment makes the CNF true if and only if the remainder of the graph is 3-colorable. Therefore, Alice has a winning strategy if and only if, for every variable assignment that Bob makes, Alice can choose her variables accordingly to make the graph 3-colorable. Notice that since Alice plays alone at the end, the graph is 3-colorable if and only if Alice wins.
 
-This shows that Alice has a winning strategy if and only if $F \in \textsc{TQBF}$, hence $\textsc{3-ColourGame}$ is $\textsc{PSPACE}$-complete.
+This shows that Alice has a winning strategy if and only if $F \in \textsc{TQBF}$, hence $\textsc{3-ColourGame}$ is $\mathsf{PSPACE}$-complete.
