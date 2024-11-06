@@ -20,13 +20,13 @@ for every $A$ in $\mathcal{A}$:
 $$
 \mathcal{A} = \left\{ A \subseteq \{0, 1\}^* : \forall n \in \mathbb{N}, \ \ |A \cap \{0, 1\}^n| \in \{0, 2^{n-1}\} \right\}
 $$
-since $L_A$ can be decided by an RP machine that, on input $1^n$, creates a random binary string $x \in \{0, 1\}^n$ and checks if $x \in A$. This machine accepts if $x \in A$ and rejects otherwise. As each string is equally likely to be chosen, the probability of acceptance is $1/2$ if $|A \cap \{0, 1\}^n| = 2^{n-1}$ and $0$ otherwise.
+since $L_A$ can be decided by an RP machine that, on input $1^n$, creates a random binary string $x \in \{0, 1\}^n$ and checks if $x \in A$. This machine accepts if $x \in A$ and rejects otherwise. As each string is equally likely to be chosen, the probability of acceptance is $1/2$ if $|A \cap \{0, 1\}^n| = 2^{n-1}$ (i.e. $1^n \in L_A$) and $0$ otherwise.
 This can be boosted to $1-(1/2)^k$ by getting $k$ independent samples of $n$-length binary strings and checking if any of them are in $A$, but this is not necessary for $\text{RP}^A$.
 Thus, $\forall A \in \mathcal{A}$, $L_A \in \text{RP}^A$.
 
-Constructing $A$ such that $L_A \notin \text{coRP}^A$ is more difficult. As done in an exercise in the course, we will construct $A$ dynamically so that no $\text{coRP}$ machine $M$ correctly decides $L_A$. Since it is the case of $\text{coRP}^A$, we will find an oracle $A$ and language $L_A$ that, for each $\text{coRP}$ machine $M$, there exists a string in the language $1^n \in L_A$ that outputs $M^A(1^n) = 0$ with non-zero probability. 
+Constructing $A$ such that $L_A \notin \text{coRP}^A$ is more difficult. As done in an exercise in the course, we will construct $A$ dynamically so that no $\text{coRP}$ machine $M$ correctly decides $L_A$. Since it is the case of $\text{coRP}^A$, we will find an oracle $A$ and language $L_A$ that, for each $\text{coRP}$ machine $M$ with access to the oracle $A$, there exists a string in the language $1^n \in L_A$ that outputs $M^A(1^n) = 0$ with non-zero probability. 
 
-We let $\mathcal{M}$ be the set of all $\text{coRP}$ Turing machines while having oracle access. This set is countable and hence there exists a sequence $(M_i)_{i \in \mathbb{N}}$ of non-deterministic Turing machines that contains all of $\mathcal{M}$ and furthermore, where we impose that each $M \in \mathcal{M}$ appears infinitely many times.
+We let $\mathcal{M}$ be the set of all $\text{coRP}$ Turing machines while having oracle access. This set is countable and hence there exists a sequence $(M_i)_{i \in \mathbb{N}}$ of non-deterministic Turing machines that contains all of $\mathcal{M}$. Furthermore, we impose that each $M \in \mathcal{M}$ appears infinitely many times\footnote{By the countable axiom of choice, a countable union of countable sets is countable.}.
 
 We will construct $A$ dynamically, by specifying what elements of $\{0, 1\}^n$ it contains for increasingly larger values of $n$. To do so, it might be easier to think of $A$ as a function 
 $$
