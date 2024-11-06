@@ -33,8 +33,8 @@ We must check all possible assignments for an unsat formula, thus we universally
 
 \begin{align}
   x \in L &\iff \exists y \, M^\mathsf{SAT}(x, y) = 1 \\
-          &\iff \exists y \, \exists a_1 \exists c_1 \, \cdots \exists a_{q(x, y)} \exists c_{q(x, y)} \, \forall w \, M'(x, y, a_1, c_1, \cdots, a_{q(x, y)}, c_{q(x, y)}, w) = 1 \\
-          &\iff \exists \langle y, a_1, c_1, \cdots, a_{q(x, y)}, c_{q(x, y)}\rangle \, \forall w \, M'(x, \langle y, a_1, c_1, a_{q(x, y)}, c_{q(x, y)}\rangle, w) = 1 \label{eq:sigma_form}
+          &\iff \exists y \, \exists a_1 \exists c_1 \, \cdots \, \exists a_{q(x, y)} \exists c_{q(x, y)} \, \forall w \, M'(x, y, \langle a_1, c_1, \cdots, a_{q(x, y)}, c_{q(x, y)}\rangle, w) = 1 \\
+          &\iff \exists \langle y, a_1, c_1, \cdots, a_{q(x, y)}, c_{q(x, y)}\rangle \, \forall w \, M'(x, y, \langle a_1, c_1, \cdots, a_{q(x, y)}, c_{q(x, y)}\rangle, w) = 1 \label{eq:sigma_form}
 \end{align}
 
 $M^\mathsf{SAT}$ makes $q(x, y)$-many $\mathsf{SAT}$ queries, where $q$ is a polynomial function. We additionally note that all $a_i$, $c_i$, $w$, $y$ are poly-size bounded. Thus we quantify over poly-size variables.
