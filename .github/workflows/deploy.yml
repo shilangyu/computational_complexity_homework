@@ -24,10 +24,19 @@ jobs:
           mkdir build
           echo '<ul><li><a href="./solutions1.pdf">solutions 1</a></li><li><a href="./solutions2.pdf">solutions 2</a></li></ul>' > build/index.html
 
-      - name: generate solutions
+      - name: generate homework 1 solutions
         run: |
           pandoc -o build/solutions1.pdf homework_1/solutions.md --resource-path homework_1/
-          pandoc -o build/solutions2.pdf homework_2/solutions.md --resource-path homework_2/
+
+      - name: generate homework 2 solutions
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: homework_2
+          root_file: solutions.tex
+
+      - name: move solutions
+        run: |
+          mv homework_2/solutions.pdf build/solutions2.pdf
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
