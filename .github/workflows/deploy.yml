@@ -22,7 +22,8 @@ jobs:
       - name: prepare build
         run: |
           mkdir build
-          echo '<ul><li><a href="./solutions1.pdf">solutions 1</a></li><li><a href="./solutions2.pdf">solutions 2</a></li></ul>' > build/index.html
+          echo '<ul><li><a href="./solutions1.pdf">solutions 1</a></li><li><a href="./solutions2.pdf">solutions 2</a></li><li><a href="./solutions3.pdf">solutions 3</a></li></ul>' > build/index.html
+
 
       - name: generate homework 1 solutions
         run: |
@@ -34,9 +35,16 @@ jobs:
           working_directory: homework_2
           root_file: solutions.tex
 
+      - name: generate homework 3 solutions
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: homework_3
+          root_file: solutions.tex
+
       - name: move solutions
         run: |
           mv homework_2/solutions.pdf build/solutions2.pdf
+          mv homework_3/solutions.pdf build/solutions3.pdf
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
