@@ -50,13 +50,18 @@ $C$ such that $C$ is a violation of any of the 3 constraints. In other words, we
 show that $D(\textrm{Search}(F)) \geq n - 1 = \Omega(n)$.
 
 Suppose that the decision tree makes at most $n - 1$ queries. For any query
-$x^{j}$, the adversary answers \[ x^j = \begin{cases} \min(\{k > j : x^k
-	\textrm{ is undefined} \lor x^k \neq k\}) & \textrm{if } j \textrm{ is
-	reachable from 1 by following pointers}, \\ j     & \textrm{otherwise}
-\end{cases} \] Because at most $n - 1$ queries are made, there exists some $i
-\in [n]$ such that $x^i$ was not queried. Notice that by construction, every
-constraint is satisfied, since we do not assign forward pointers to self-loops.
-Therefore, the choice of $x^i$ determines which clause is unsatisfied.
+$x^{j}$, the adversary answers
+\[
+x^j = \begin{cases}
+	\min(\{k > j : x^k \textrm{ is undefined} \lor x^k \neq k\}) & \textrm{if
+	} j \textrm{ is reachable from 1 by following pointers}, \\
+	j & \textrm{otherwise}
+\end{cases}
+\]
+Because at most $n - 1$ queries are made, there exists some $i \in [n]$ such
+that $x^i$ was not queried. Notice that by construction, every constraint is
+satisfied, since we do not assign forward pointers to self-loops. Therefore, the
+choice of $x^i$ determines which clause is unsatisfied.
 
 If $i = 1$, the constructed assignment only contains self-loops, since $1$ was
 never queried. Therefore, the adversary can make either the first or third
