@@ -32,9 +32,9 @@ Marcin Wojnarowski}
 
 \subsection*{"$\le$"}
 
-Let $t_f$ be the DT computing $f$ with height $D(f)$ and let $t_g$ be the DT computing $g$ with height $D(g)$. We construct $t$ which computes $f \circ g$ by inlining $t_g$ multiple times. Namely, $t$ is constructed from $t_f$: when $t_f$ would query its $i$-th input bit $x_i$, we inline $t_g$ to compute the answer.
+Let $T_f$ be the DT computing $f$ with height $D(f)$ and let $T_g$ be the DT computing $g$ with height $D(g)$. We construct $T$ which computes $f \circ g$ by inlining $T_g$ multiple times. Namely, $T$ is constructed from $T_f$: when $T_f$ would query its $i$-th input bit $x_i$, we inline $T_g$ to compute the answer.
 
-The height of $t$ is precisely $D(f) \cdot D(g)$, thus $D(f \circ g) \le D(f) \cdot D(g)$.
+The height of $T$ is precisely $D(f) \cdot D(g)$, thus $D(f \circ g) \le D(f) \cdot D(g)$.
 
 \subsection*{"$\ge$"}
 
