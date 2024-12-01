@@ -31,16 +31,17 @@ Marcin Wojnarowski}
 \section*{Problem 1}
 
 \section*{Problem 2}
-We first show that no assignment $x^{1}, \ldots, x^{n}$ satisfies formula $F$.
-Consider the sequence $y_0 = 1, y_1 = x^{y_0}, y_2 = x^{y_1}, \ldots, y_{n}
-= x^{y_{n-1}}$ of $n+1$ nodes which is the sequence of nodes reached from $1$ by
-following pointers. By constraints 1 and 2, the sequence of $y_i$ is
-monotonically increasing. Since $x^1 > 1$, one has $y_1 > y_0$, and therefore by
-the third constraint, $y_1$ does not point forward to a self-loop. Generalizing the
-argument inductively, every $y_i$ does not point forward to a self-loop, hence
-the sequence is strictly monotonic. But there are $n+1$ nodes, hence by the
-pigeonhole principle there exists $k \in [n]$ such that $y_i = y_j = k$ for some
-$i \neq j$, contradicting strict monotonicity.
+
+We first show that no assignment $x^{1}, \ldots, x^{n}$
+satisfies formula $F$. Consider the sequence $y_0 = 1, y_1 = x^{y_0}, y_2
+= x^{y_1}, \ldots, y_{n} = x^{y_{n-1}}$ of $n+1$ nodes which is the sequence of
+nodes reached from $1$ by following pointers. By constraints 1 and 2, the
+sequence of $y_i$ is monotonically increasing. Since $x^1 > 1$, one has $y_1
+> y_0$, and therefore by the third constraint, $y_1$ does not point forward to
+a self-loop. Generalizing the argument inductively, every $y_i$ does not point
+forward to a self-loop, hence the sequence is strictly monotonic. But there are
+$n+1$ nodes, hence by the pigeonhole principle there exists $k \in [n]$ such
+that $y_i = y_j = k$ for some $i \neq j$, contradicting strict monotonicity.
 
 We now show that any tree-like refutation proof of $F$ requires $\Omega(n)$
 depth. Consider the decision tree for the search problem of $F$. We show by an
