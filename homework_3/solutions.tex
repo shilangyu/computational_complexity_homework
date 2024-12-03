@@ -49,8 +49,10 @@ adversarial argument that any $n - 1$ queries are not enough to find a clause
 $C$ such that $C$ is a violation of any of the 3 constraints. In other words, we
 show that $D(\textrm{Search}(F)) \geq n - 1 = \Omega(n)$.
 
-Suppose that the decision tree makes at most $n - 1$ queries. For any query
-$x^{j}$, the adversary answers
+Suppose that the decision tree makes at most $n - 1$ queries, and assume for the
+sake of simplicity that one query is enough to determine all $\log(n)$ bits of
+$x^j$ (it might not be the case in practice, but the following result would
+still apply). For any query $x^{j}$, the adversary answers
 \[
 x^j = \begin{cases}
 	\min(\{k > j : x^k \textrm{ is undefined} \lor x^k \neq k\}) & \textrm{if
