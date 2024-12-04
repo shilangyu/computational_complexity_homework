@@ -79,4 +79,30 @@ incorrect.
 
 \section*{Problem 3}
 
+Let $x$ and $y$ be the two binary strings in $\{0,1\}^n$ that we want to check if they are not disjoint (i.e. $\exists i \in [n]: x_i = y_i = 1$) in the SI instance. To create a reduction from a SI instance to a Perfect Matching communication problem instance, we need to define two functions $A: \{0,1\}^n \to E$ and $B: \{0,1\}^n \to E$ such that the graph $G=(V,A(x)\cup B(y))$ has a perfect matching if and only if $x$ and $y$ are not disjoint.
+
+We will use the following idea. We will create a bipartite graph $G = (V, E = E_a \cup E_b)$ with node set $V = \{v_{x_1}, v_{x_2}, \ldots, v_{x_n}, v_{y_1}, v_{y_2}, \ldots, v_{y_n}, t_x, t_y\}$. To define $E_a = A(x)$, we will process each bit of $x$ independently. For each $i\in [n]$:
+
+\begin{itemize}
+    \item We add an edge between $v_{x_i}$ and $v_{y_i}$.
+    \item If $x_i = 1$, we add an edge between $v_{x_i}$ and $t_y$.
+\end{itemize}
+
+To define $E_b = B(y)$, we will define it analogously, processing each bit of $y$ independently. For each $i\in [n]$:
+
+\begin{itemize}
+    \item We add an edge between $v_{x_i}$ and $v_{y_i}$.
+    \item If $y_i = 1$, we add an edge between $v_{y_i}$ and $t_x$.
+\end{itemize}
+
+The graph $G$ constructed in this way has a perfect matching if and only if $x$ and $y$ are not disjoint. Let us look at the two directions of the proof.
+
+\begin{itemize}
+    \item[($\impliedby$)] If $x$ and $y$ are not disjoint, we can choose any $i$ such that $x_i = y_i = 1$. Then, the perfect matching can be constructed by matching $v_{x_i}$ with $t_y$, $v_{y_i}$ with $t_x$, and all other pairs $v_{x_j}$ with $v_{y_j}$ for $j \neq i \in [n]$. This is a perfect matching because all nodes are covered and no two edges share a node.
+    \item[($\implies$)] Let us prove this by contradiction. If $x$ and $y$ are disjoint, then for any perfect matching in $G$, the nodes $v_{x_i}$ and $v_{y_i}$ for $i \in [n]$ must be matched with each other. This is because for all pairs $v_{x_i}$ and $v_{y_i}$ for $i \in [n]$, there is at least one node that has its bit value set to $0$, and thus, it is only connected to the other node in the pair by construction. This means that the nodes $t_x$ and $t_y$ are not matched with any other nodes, and since there is no edge connecting them, there is no perfect matching in $G$ and we arrive at a contradiction.
+\end{itemize}
+
+Thus, our reduction from SI to the perfect matching communication problem instance is correct. Since SI has $\Omega(n)$ randomized communication complexity, it follows that the perfect matching problem also has $\Omega(n)$ randomized communication complexity.
+
+
 \end{document}
