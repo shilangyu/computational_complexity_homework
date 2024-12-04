@@ -33,5 +33,30 @@ Marcin Wojnarowski}
 \section*{Problem 2}
 
 \section*{Problem 3}
+Let $x$ and $y$ be the two binary strings in $\{0,1\}^n$ that we want to check if they are not disjoint (i.e. $\exists i \in [n]: x_i = y_i$) in the SI instance. To create a reduction from a SI instance to a Perfect Matching communication problem instance, we need to define two functions $A: \{0,1\}^n \to E \subset V \times V$ and $B: \{0,1\}^n \to E \subset V \times V$ such that the graph $G=(V,A(x)\cup B(y))$ has a perfect matching if and only if $x$ and $y$ are not disjoint.
+
+We will use the following idea. We will create a bipartite graph $G = (V, E = E_a \cap E_b)$ with node set $V = \{vx_1, vx_2, \ldots, vx_n, vy_1, vy_2, \ldots, vy_n, tx, ty\}$. To define $E_a = A(x)$, we will process each bit of $x$ independently. For each $i\in [n]$, we add an edge between $vx_i$ and $vy_i$, and additionally
+
+\begin{itemize}
+    \item We add an edge between $vx_i$ and $vy_i$.
+    \item If $x_i = 1$, we add an edge between $vx_i$ and $ty$.
+\end{itemize}
+
+To define $E_b = B(y)$, we will define it analogously, processing each bit of $y$ independently. For each $i\in [n]$:
+
+\begin{itemize}
+    \item We add an edge between $vx_i$ and $vy_i$.
+    \item If $y_i = 1$, we add an edge between $vy_i$ and $tx$.
+\end{itemize}
+
+The graph $G$ constructed in this way has a perfect matching if and only if $x$ and $y$ are not disjoint. Let us look at the two directions of the proof.
+
+\begin{itemize}
+    \item $\impliedby$ If $x$ and $y$ are not disjoint, we can choose any $i$ such that $x_i = y_i$. Then, the perfect matching can be constructed by matching $vx_i$ with $ty$, $vy_i$ with $tx$, and all other pairs $vx_j$ with $vy_j$ for $j \neq i \in [n]$. This is a perfect matching because all nodes are touched and no two edges share a node.
+    \item $\implies$ Let us prove this by contradiction. If $x$ and $y$ are disjoint, then for any perfect matching in $G$, the nodes $vx_i$ and $vy_i$ for $i \in [n]$ must be matched with each other. This is because for all pairs $vx_i$ and $vy_i$ for $i \in [n]$, there is at least one node that has its bit value set to $0$, and thus, it is only connected to the other node in the pair by construction. This means that the nodes $tx$ and $ty$ are not matched with any other nodes, and since there is no edge connecting them, there is no perfect matching in $G$ and we arrive at a contradiction.
+\end{itemize}
+
+Thus, we have shown that the reduction from the SI instance to the Perfect Matching communication problem instance is correct.
+
 
 \end{document}
