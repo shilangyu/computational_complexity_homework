@@ -32,6 +32,51 @@ Marcin Wojnarowski}
 
 \section*{Problem 2}
 
+We first show that no assignment $x^{1}, \ldots, x^{n}$
+satisfies formula $F$. Consider the sequence $y_0 = 1, y_1 = x^{y_0}, y_2
+= x^{y_1}, \ldots, y_{n} = x^{y_{n-1}}$ of $n+1$ nodes which is the sequence of
+nodes reached from $1$ by following pointers. By constraints 1 and 2, the
+sequence of $y_i$ is monotonically increasing. Since $x^1 > 1$, one has $y_1
+> y_0$, and therefore by the third constraint, $y_1$ does not point forward to
+a self-loop. Generalizing the argument inductively, every $y_i$ does not point
+forward to a self-loop, hence the sequence is strictly monotonic. But there are
+$n+1$ nodes, hence by the pigeonhole principle there exists $k \in [n]$ such
+that $y_i = y_j = k$ for some $i \neq j$, contradicting strict monotonicity.
+
+We now show that any tree-like refutation proof of $F$ requires $\Omega(n)$
+depth. Consider the decision tree for the search problem of $F$. We show by an
+adversarial argument that any $n - 1$ queries are not enough to find a clause
+$C$ such that $C$ is a violation of any of the 3 constraints. In other words, we
+show that $D(\textrm{Search}(F)) \geq n - 1 = \Omega(n)$.
+
+Suppose that the decision tree makes at most $n - 1$ queries, and assume for the
+sake of simplicity that one query is enough to determine all $\log(n)$ bits of
+$x^j$ (it might not be the case in practice, but the following result would
+still apply). For any query $x^{j}$, the adversary answers
+\[
+x^j = \begin{cases}
+	\min(\{k > j : x^k \textrm{ is undefined} \lor x^k \neq k\}) & \textrm{if
+	} j \textrm{ is reachable from 1 by following pointers}, \\
+	j & \textrm{otherwise}
+\end{cases}
+\]
+Because at most $n - 1$ queries are made, there exists some $i \in [n]$ such
+that $x^i$ was not queried. Notice that by construction, every constraint is
+satisfied, since we do not assign forward pointers to self-loops. Therefore, the
+choice of $x^i$ determines which clause is unsatisfied.
+
+If $i = 1$, the constructed assignment only contains self-loops, since $1$ was
+never queried. Therefore, the adversary can make either the first or third
+constraint fail, by setting $x^1 = 1$ or $x^1 = 2$, respectively.
+
+If $i > 1$, the adversary can choose $x^i$ such that either constraint 2 or
+3 fails, by setting $x^i = i - 1$ or $x^i = i$, respectively, since $x^i$ is
+reachable from $1$.
+
+In both cases, for any clause that the decision tree outputs, there exists an
+adversarial input such that the clause is valid, thereby making the output
+incorrect.
+
 \section*{Problem 3}
 
 \end{document}
