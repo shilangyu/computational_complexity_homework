@@ -30,6 +30,8 @@ Marcin Wojnarowski}
 
 \section*{Problem 1}
 
+We prove the equality $D(f \circ g) = D(f) \cdot D(g)$ by showing both inequalities.
+
 \subsection*{"$\le$"}
 
 Let $T_f$ be the DT computing $f$ with height $D(f)$ and let $T_g$ be the DT computing $g$ with height $D(g)$. We construct $T$ which computes $f \circ g$ by inlining $T_g$ multiple times. Namely, $T$ is constructed from $T_f$: when $T_f$ would query its $i$-th input bit $x_i$, we inline $T_g$ to compute the answer.
