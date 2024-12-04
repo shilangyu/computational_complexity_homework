@@ -30,6 +30,22 @@ Marcin Wojnarowski}
 
 \section*{Problem 1}
 
+We prove the equality $D(f \circ g) = D(f) \cdot D(g)$ by showing both inequalities.
+
+\subsection*{"$\le$"}
+
+Let $T_f$ be the DT computing $f$ with height $D(f)$ and let $T_g$ be the DT computing $g$ with height $D(g)$. We construct $T$ which computes $f \circ g$ by inlining $T_g$ multiple times. Namely, $T$ is constructed from $T_f$: when $T_f$ would query its $i$-th input bit $x_i$, we inline $T_g$ to compute the answer.
+
+The height of $T$ is precisely $D(f) \cdot D(g)$, thus $D(f \circ g) \le D(f) \cdot D(g)$.
+
+\subsection*{"$\ge$"}
+
+From exercise sheet VIII exercise 3, we know that for any lower bound on $D(\cdot)$ there exists an adversarial strategy. More importantly, for a lower bound which is an equality an adversarial strategy also exists. Thus suppose we are given adversarial strategies $s_f$ and $s_g$ for respectively $f$ and $g$ that give us the greatest lower bound (equality) of $D(f)$ and $D(g)$ respectively. We construct an adversarial strategy for $f \circ g$.
+
+We use $n$ instances of $s_g$ and one of $s_f$. Suppose a DT of $f \circ g$ wants to query some bit $x_i^j$ for $i \le m$ and $j \le n$. We use the $j$-th instance of $s_g$ to answer the query about its $i$-th bit. These strategy instances are paused and resumed each time they are used. This way, for each $j \le n$ the value of $g(x^j)$ is still undetermined after $D(g)-1$ queries to $x^j$ bits. On the $D(g)$-th query to $x^j$ we switch to using the $s_f$ strategy for the $j$-th bit.
+
+Notice that the DT needs to query at least $D(f)$ different $x^j$ (since $x^j$ are independent, so are $g(x^j)$). By the adversarial argument this yields $D(f \circ g) \ge (D(g) - 1) \cdot D(f) + D(f) = D(g) \cdot D(f)$.
+
 \section*{Problem 2}
 
 We first show that no assignment $x^{1}, \ldots, x^{n}$
