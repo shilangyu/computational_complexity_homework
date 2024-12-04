@@ -42,7 +42,7 @@ From exercise sheet VIII exercise 3, we know that for any lower bound on $D(\cdo
 
 We use $n$ instances of $s_g$ and one of $s_f$. Suppose a DT of $f \circ g$ wants to query some bit $x_i^j$ for $i \le m$ and $j \le n$. We use the $j$-th instance of $s_g$ to answer the query about its $i$-th bit. These strategy instances are paused and resumed each time they are used. This way, for each $j \le n$ the value of $g(x^j)$ is still undetermined after $D(g)-1$ queries to $x^j$ bits. On the $D(g)$-th query to $x^j$ we switch to using the $s_f$ strategy for the $j$-th bit.
 
-This yields $D(f \circ g) \ge (D(g) - 1) \cdot n + D(f)$. Notice however that $D(h)$ for any $h$ is smaller or equal to the input size (as this means all input bits have been queried). Thus $D(f) \le n$. This gives us $D(f \circ g) \ge (D(g) - 1) \cdot n + D(f) \ge (D(g) - 1) \cdot D(f) + D(f) = D(g) \cdot D(f)$.
+Notice that the DT needs to query at least $D(f)$ different $x^j$ (since $x^j$ are independent, so are $g(x^j)$). By the adversarial argument this yields $D(f \circ g) \ge (D(g) - 1) \cdot D(f) + D(f) = D(g) \cdot D(f)$.
 
 \section*{Problem 2}
 
